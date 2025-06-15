@@ -98,7 +98,9 @@ export default function Header() {
   </Link>
 
   {/* Hoverable + sticky dropdown submenu */}
-  <div className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-xl rounded-lg w-56 z-[9999] py-2">
+  <div <ul className="absolute left-0 -mt-1 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
+                           opacity-0 group-hover:opacity-100 transition-all duration-300 transform 
+                           scale-95 group-hover:scale-100 z-[9999] py-2">
     <ul className="flex flex-col">
       <li>
         <Link href="/about/vision" legacyBehavior>
