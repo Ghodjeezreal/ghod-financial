@@ -3,9 +3,9 @@ import Image from 'next/image'
 
 export default function Header() {
   return (
-    <header className="bg-white shadow">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo & Brand */}
+    <header className="bg-white shadow-md sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+        {/* Logo and Brand */}
         <Link href="/" className="flex items-center space-x-3">
           <div className="flex items-center space-x-3">
             <Image src="/logo.png" alt="GHOD Logo" width={40} height={40} />
@@ -13,31 +13,30 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Navigation */}
-        <nav className="flex items-center space-x-8">
-          <Link href="/"><a className="hover:text-accent">Home</a></Link>
+        {/* Main Navigation */}
+        <ul className="flex space-x-8 items-center font-medium">
+          <li>
+            <Link href="/"><a className="hover:text-accent">Home</a></Link>
+          </li>
 
           {/* Services Dropdown */}
-          <div className="relative group">
-            <button className="hover:text-accent">Services ▾</button>
-            <div className="absolute top-full left-0 mt-2 hidden group-hover:flex flex-col bg-white shadow-lg rounded z-90 w-56
-                opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform 
-                scale-95 group-hover:scale-100 origin-top">
-              <Link href="/services/bridging-loans">
-                <a className="px-5 py-3 hover:bg-gray-100 whitespace-nowrap">Bridging Loans</a>
-              </Link>
-              <Link href="/services/real-estate">
-                <a className="px-5 py-3 hover:bg-gray-100 whitespace-nowrap">Real Estate Finance</a>
-              </Link>
-              <Link href="/services/development">
-                <a className="px-5 py-3 hover:bg-gray-100 whitespace-nowrap">Development Loans</a>
-              </Link>
-            </div>
-          </div>
+          <li className="relative group">
+            <button className="hover:text-accent focus:outline-none">Services ▾</button>
+            <ul className="absolute left-0 top-full mt-2 hidden group-hover:flex flex-col bg-white shadow-lg rounded w-56
+                           transition-all duration-300 ease-out opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 z-50">
+              <li><Link href="/services/bridging-loans"><a className="px-5 py-3 hover:bg-gray-100 whitespace-nowrap">Bridging Loans</a></Link></li>
+              <li><Link href="/services/real-estate"><a className="px-5 py-3 hover:bg-gray-100 whitespace-nowrap">Real Estate Finance</a></Link></li>
+              <li><Link href="/services/development"><a className="px-5 py-3 hover:bg-gray-100 whitespace-nowrap">Development Loans</a></Link></li>
+            </ul>
+          </li>
 
-          <Link href="/news"><a className="hover:text-accent">Insights</a></Link>
-          <Link href="/contact"><a className="hover:text-accent">Contact</a></Link>
-        </nav>
+          <li>
+            <Link href="/news"><a className="hover:text-accent">Insights</a></Link>
+          </li>
+          <li>
+            <Link href="/contact"><a className="hover:text-accent">Contact</a></Link>
+          </li>
+        </ul>
       </div>
     </header>
   )
