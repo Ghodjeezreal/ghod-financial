@@ -90,43 +90,48 @@ export default function Header() {
           </li>
 
           <li className="relative group">
+  {/* CLICKABLE About Us main link */}
   <Link href="/about" legacyBehavior>
     <a className="hover:text-accent inline-block">
       About Us ▾
     </a>
   </Link>
 
-  <ul className="absolute left-0 mt-2 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56 z-[9999] py-2 group-hover:block">
-    <li>
-      <Link href="/about/vision" legacyBehavior>
-        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-          Vision & Mission
-        </a>
-      </Link>
-    </li>
-    <li>
-      <Link href="/about/team" legacyBehavior>
-        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-          Global Team
-        </a>
-      </Link>
-    </li>
-    <li>
-      <Link href="/about/stories" legacyBehavior>
-        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-          Success Stories
-        </a>
-      </Link>
-    </li>
-    <li>
-      <Link href="/about/membership" legacyBehavior>
-        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-          Membership
-        </a>
-      </Link>
-    </li>
-  </ul>
+  {/* Hoverable + sticky dropdown submenu */}
+  <div className="absolute left-0 mt-2 hidden group-hover:block bg-white shadow-xl rounded-lg w-56 z-[9999] py-2">
+    <ul className="flex flex-col">
+      <li>
+        <Link href="/about/vision" legacyBehavior>
+          <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+            Vision & Mission
+          </a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/about/team" legacyBehavior>
+          <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+            Global Team
+          </a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/about/stories" legacyBehavior>
+          <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+            Success Stories
+          </a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/about/membership" legacyBehavior>
+          <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap border-t border-gray-200">
+            Membership
+          </a>
+        </Link>
+      </li>
+    </ul>
+  </div>
 </li>
+
           <li>
             <Link href="/services" legacyBehavior>
               <a
