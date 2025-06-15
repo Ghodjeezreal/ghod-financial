@@ -78,7 +78,6 @@ export default function Header() {
                 absolute top-full left-0
                 hidden group-hover:block
                 bg-white shadow-xl rounded-lg w-56 z-50
-                transition-opacity duration-200 ease-out
               "
             >
               <ul className="divide-y divide-gray-200">
