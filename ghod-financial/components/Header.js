@@ -90,18 +90,16 @@ export default function Header() {
           </li>
 
           <li className="relative group">
-  {/* CLICKABLE About Us main link */}
+  {/* Clickable link */}
   <Link href="/about" legacyBehavior>
     <a className="hover:text-accent inline-block">
       About Us ▾
     </a>
   </Link>
 
-  {/* Hoverable + sticky dropdown submenu */}
-  <div <ul className="absolute left-0 -mt-1 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
-                           opacity-0 group-hover:opacity-100 transition-all duration-300 transform 
-                           scale-95 group-hover:scale-100 z-[9999] py-2">
-    <ul className="flex flex-col">
+  {/* Dropdown */}
+  <div className="absolute left-0 mt-3 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300 bg-white shadow-xl rounded-lg w-56 z-[9999]">
+    <ul className="flex flex-col divide-y divide-gray-200">
       <li>
         <Link href="/about/vision" legacyBehavior>
           <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
@@ -125,7 +123,7 @@ export default function Header() {
       </li>
       <li>
         <Link href="/about/membership" legacyBehavior>
-          <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap border-t border-gray-200">
+          <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
             Membership
           </a>
         </Link>
@@ -133,6 +131,7 @@ export default function Header() {
     </ul>
   </div>
 </li>
+
 
           <li>
             <Link href="/services" legacyBehavior>
