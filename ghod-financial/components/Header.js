@@ -88,10 +88,10 @@ export default function Header() {
 
           {/* Main Nav */}
           <nav className="flex flex-col space-y-1 text-sm uppercase tracking-wide font-semibold">
-            <MobileLink href="/" label="Home" active={isActive('/')} />
-            <button
-              className="w-full text-left px-2 py-3 border-t border-gray-700 flex justify-between items-center hover:text-accent"
-              onClick={() => setSubMenuOpen(true)}
+  <MobileLink href="/" label="Home" active={isActive('/')} noTopBorder />
+  <button
+    className="w-full text-left px-2 py-3 border-t border-gray-700 flex justify-between items-center hover:text-accent"
+    onClick={() => setSubMenuOpen(true)}
             >
               About Us →
             </button>
