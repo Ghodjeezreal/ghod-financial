@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function Header() {
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="bg-white shadow-md sticky top-0 z-[999]">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo and Brand */}
         <Link href="/" className="flex items-center space-x-3">
@@ -14,7 +14,7 @@ export default function Header() {
         </Link>
 
         {/* Main Navigation */}
-        <ul className="flex space-x-8 items-center font-medium">
+        <ul className="flex space-x-8 items-center font-medium relative z-50">
           <li>
             <Link href="/"><a className="hover:text-accent">Home</a></Link>
           </li>
@@ -22,8 +22,9 @@ export default function Header() {
           {/* Services Dropdown */}
           <li className="relative group">
             <button className="hover:text-accent focus:outline-none">Services ▾</button>
-            <ul className="absolute left-0 top-full mt-2 hidden group-hover:flex flex-col bg-white shadow-lg rounded w-56
-                           transition-all duration-300 ease-out opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 z-50">
+            <ul className="absolute left-0 top-full mt-2 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
+                           opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform 
+                           scale-95 group-hover:scale-100 z-[9999]">
               <li><Link href="/services/bridging-loans"><a className="px-5 py-3 hover:bg-gray-100 whitespace-nowrap">Bridging Loans</a></Link></li>
               <li><Link href="/services/real-estate"><a className="px-5 py-3 hover:bg-gray-100 whitespace-nowrap">Real Estate Finance</a></Link></li>
               <li><Link href="/services/development"><a className="px-5 py-3 hover:bg-gray-100 whitespace-nowrap">Development Loans</a></Link></li>
