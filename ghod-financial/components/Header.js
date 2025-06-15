@@ -72,10 +72,19 @@ export default function Header() {
     <a className="inline-block hover:text-accent">About Us ▾</a>
   </Link>
 
-  {/* Dropdown, positioned flush under the link */}
-  <ul className="absolute left-0 -mt-1 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
-                 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform 
-                 scale-95 group-hover:scale-100 z-[9999] py-2">
+  {/* Dropdown menu */}
+  <ul
+    className="
+      absolute
+      top-full left-0        /* sits flush under the link */
+      w-56
+      bg-white shadow-xl rounded-lg
+      opacity-0 pointer-events-none
+      group-hover:opacity-100 group-hover:pointer-events-auto
+      transition-opacity duration-200
+      z-50
+    "
+  >
     <li>
       <Link href="/about/vision" legacyBehavior>
         <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
