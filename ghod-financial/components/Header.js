@@ -40,7 +40,17 @@ export default function Header() {
             </ul>
           </li>
 
-          <li><Link href="/services"><a className={`${isActive('/services') ? 'text-accent font-bold' : 'hover:text-accent'}`}>Services</a></Link></li>
+          <Link href="/services">
+              <a className="hover:text-accent inline-block">Services ▾</a>
+            </Link>
+            <ul className="absolute left-0 -mt-1 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
+                           opacity-0 group-hover:opacity-100 transition-all duration-300 transform 
+                           scale-95 group-hover:scale-100 z-[9999] py-2">
+              <li><Link href="/services/bridging-loans"><a className="block px-4 py-3 hover:bg-gray-100">Bridging Loans</a></Link></li>
+              <li><Link href="/services/real-estate"><a className="block px-4 py-3 hover:bg-gray-100">Real Estate Finance</a></Link></li>
+              <li><Link href="/services/development"><a className="block px-4 py-3 hover:bg-gray-100">Development Loans</a></Link></li>
+            </ul>
+          </li>
           <li><Link href="/news"><a className={`${isActive('/news') ? 'text-accent font-bold' : 'hover:text-accent'}`}>Highlights</a></Link></li>
           <li><Link href="/contact"><a className={`${isActive('/contact') ? 'text-accent font-bold' : 'hover:text-accent'}`}>Contact</a></Link></li>
         </ul>
