@@ -22,6 +22,9 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [subMenuOpen, setSubMenuOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
+  const [aboutHover, setAboutHover] = useState(false)
+
+  
   const router = useRouter()
 
   const isActive = (path) => router.pathname === path
@@ -66,24 +69,24 @@ export default function Header() {
             </Link>
           </li>
 
-          <li className="relative group">
+          <li
+  onMouseEnter={() => setAboutHover(true)}
+  onMouseLeave={() => setAboutHover(false)}
+  className="relative"
+>
   {/* Clickable “About Us” */}
   <Link href="/about" legacyBehavior>
     <a className="inline-block hover:text-accent">About Us ▾</a>
   </Link>
 
-  {/* Dropdown menu */}
+  {/* Controlled submenu */}
   <ul
-    className="
-      absolute
-      top-full left-0        /* sits flush under the link */
-      w-56
-      bg-white shadow-xl rounded-lg
-      opacity-0 pointer-events-none
-      group-hover:opacity-100 group-hover:pointer-events-auto
-      transition-opacity duration-200
-      z-50
-    "
+    className={`
+      absolute top-full left-0
+      bg-white shadow-xl rounded-lg w-56 z-50
+      transition-opacity duration-150 ease-out
+      ${aboutHover ? 'opacity-100 block' : 'opacity-0 hidden'}
+    `}
   >
     <li>
       <Link href="/about/vision" legacyBehavior>
