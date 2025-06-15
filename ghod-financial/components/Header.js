@@ -22,9 +22,32 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Toggle buttons */}
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex space-x-8 items-center font-medium">
+          <li><Link href="/"><a className={`${isActive('/') ? 'text-accent font-bold' : 'hover:text-accent'}`}>Home</a></Link></li>
+
+          <li className="group relative">
+            <Link href="/about">
+              <a className={`${isActive('/about') ? 'text-accent font-bold' : 'hover:text-accent'} inline-block`}>
+                About Us ▾
+              </a>
+            </Link>
+            <ul className="absolute left-0 mt-2 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56 z-[9999] py-2">
+              <li><Link href="/about/vision"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Vision & Mission</a></Link></li>
+              <li><Link href="/about/team"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Global Team</a></Link></li>
+              <li><Link href="/about/stories"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Success Stories</a></Link></li>
+              <li><Link href="/about/membership"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Membership</a></Link></li>
+            </ul>
+          </li>
+
+          <li><Link href="/services"><a className={`${isActive('/services') ? 'text-accent font-bold' : 'hover:text-accent'}`}>Services</a></Link></li>
+          <li><Link href="/news"><a className={`${isActive('/news') ? 'text-accent font-bold' : 'hover:text-accent'}`}>Highlights</a></Link></li>
+          <li><Link href="/contact"><a className={`${isActive('/contact') ? 'text-accent font-bold' : 'hover:text-accent'}`}>Contact</a></Link></li>
+        </ul>
+
+        {/* Mobile controls */}
         <div className="flex items-center space-x-4 md:hidden">
-          {/* Dark mode switch */}
+          {/* Dark mode toggle */}
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="text-xl"
@@ -41,16 +64,14 @@ export default function Header() {
             ☰
           </button>
         </div>
-
-        {/* Desktop nav can go here if needed */}
       </div>
 
-      {/* Dark overlay */}
+      {/* Dark Overlay */}
       {menuOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-60 z-[998]" onClick={() => setMenuOpen(false)}></div>
       )}
 
-      {/* Sidebar menu */}
+      {/* Mobile Sidebar */}
       <div className={`fixed top-0 right-0 h-full w-72 ${darkMode ? 'bg-[#0f172a] text-white' : 'bg-white text-black'} 
                       z-[999] transform transition-transform duration-500 ease-in-out 
                       ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
@@ -60,7 +81,7 @@ export default function Header() {
             ✕
           </button>
 
-          {/* Menu Items */}
+          {/* Mobile Menu Items */}
           <nav className="flex flex-col space-y-1 text-sm uppercase tracking-wide font-semibold">
             <SidebarLink href="/" label="Home" active={isActive('/')} />
             <div>
@@ -94,7 +115,6 @@ export default function Header() {
   )
 }
 
-// Reusable link component with active styling
 function SidebarLink({ href, label, active }) {
   return (
     <Link href={href}>
