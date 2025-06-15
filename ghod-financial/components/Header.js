@@ -28,18 +28,16 @@ export default function Header() {
   const router = useRouter()
   const isActive = (path) => router.pathname === path
 
-  // Prevent background scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     if (!menuOpen) setSubMenuOpen(false)
   }, [menuOpen])
 
-  // Robust submenu hover logic
+  // About Us submenu logic
   const handleMouseEnter = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current)
     setAboutHover(true)
   }
-
   const handleMouseLeave = () => {
     closeTimer.current = setTimeout(() => {
       setAboutHover(false)
@@ -48,14 +46,16 @@ export default function Header() {
 
   return (
     <header className={`sticky top-0 z-[999] shadow-md transition-colors duration-300 ${darkMode ? 'bg-[#0f172a]' : 'bg-white'}`}>
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-2 py-4"> {/* px-2 for more left logo */}
         {/* Logo */}
-        <Link href="/" legacyBehavior>
-          <a className="flex items-center space-x-3">
-            <Image src="/logo.png" alt="GHOD Logo" width={40} height={40} />
-            <span className={`text-2xl font-bold tracking-widest ${darkMode ? 'text-white' : 'text-primary'}`}>GHOD</span>
-          </a>
-        </Link>
+        <div className="flex-shrink-0 pl-0">
+          <Link href="/" legacyBehavior>
+            <a className="flex items-center space-x-3">
+              <Image src="/logo.png" alt="GHOD Logo" width={40} height={40} />
+              <span className={`text-2xl font-bold tracking-widest ${darkMode ? 'text-white' : 'text-primary'}`}>GHOD</span>
+            </a>
+          </Link>
+        </div>
 
         {/* Mobile Controls */}
         <div className="flex items-center space-x-4 md:hidden">
@@ -121,7 +121,27 @@ export default function Header() {
               </li>
             </ul>
           </li>
-          {/* ... other nav items ... */}
+          <li>
+            <Link href="/services" legacyBehavior>
+              <a className={isActive('/services') ? 'text-accent font-bold' : 'hover:text-accent'}>
+                Services
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/news" legacyBehavior>
+              <a className={isActive('/news') ? 'text-accent font-bold' : 'hover:text-accent'}>
+                Insights
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/contact" legacyBehavior>
+              <a className={isActive('/contact') ? 'text-accent font-bold' : 'hover:text-accent'}>
+                Contact
+              </a>
+            </Link>
+          </li>
         </ul>
       </div>
 
