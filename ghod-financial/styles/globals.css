@@ -22,4 +22,32 @@
   .animate-slide-in {
     animation: slide-in 0.4s ease-out forwards;
   }
+  @keyframes overlay-slide {
+    0%,100% { background-position: 0% 50%; }
+    50%     { background-position:100% 50%; }
+  }
+  .overlay-animate {
+    @apply bg-[length:200%_200%] bg-gradient-to-r from-black via-transparent to-black opacity-70;
+    animation: overlay-slide 30s ease infinite;
+  }
+
+  /* Typewriter effect for headline */
+  @keyframes typing {
+    from { width: 0 }
+    to   { width: 100% }
+  }
+  @keyframes blink {
+    0%,100% { border-color: transparent }
+    50%      { border-color: white }
+  }
+  .typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid white;
+    animation:
+      typing 3s steps(30,end) 1,
+      blink  .75s step-end infinite;
+    display: inline-block;
+    width: 0; /* start closed */
+  }
 }
