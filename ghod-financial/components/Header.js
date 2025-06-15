@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -22,29 +22,8 @@ export default function Header() {
           </div>
         </Link>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-8 items-center font-medium relative z-50">
-          <li><Link href="/"><a className="hover:text-accent">Home</a></Link></li>
-          <li className="relative group">
-            <Link href="/services">
-              <a className="hover:text-accent inline-block">Services ▾</a>
-            </Link>
-            <ul className="absolute left-0 -mt-1 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
-                           opacity-0 group-hover:opacity-100 transition-all duration-300 transform 
-                           scale-95 group-hover:scale-100 z-[9999] py-2">
-              <li><Link href="/services/bridging-loans"><a className="block px-4 py-3 hover:bg-gray-100">Bridging Loans</a></Link></li>
-              <li><Link href="/services/real-estate"><a className="block px-4 py-3 hover:bg-gray-100">Real Estate Finance</a></Link></li>
-              <li><Link href="/services/development"><a className="block px-4 py-3 hover:bg-gray-100">Development Loans</a></Link></li>
-            </ul>
-          </li>
-          <li><Link href="/news"><a className="hover:text-accent">Insights</a></Link></li>
-          <li><Link href="/contact"><a className="hover:text-accent">Contact</a></Link></li>
-        </ul>
-      </div>
-
-        {/* Mobile controls */}
+        {/* Mobile Controls */}
         <div className="flex items-center space-x-4 md:hidden">
-          {/* Dark mode toggle */}
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="text-xl"
@@ -52,8 +31,6 @@ export default function Header() {
           >
             {darkMode ? '🌙' : '☀️'}
           </button>
-
-          {/* Menu toggle */}
           <button
             onClick={() => setMenuOpen(true)}
             className={`text-2xl ${darkMode ? 'text-white' : 'text-primary'}`}
@@ -61,9 +38,30 @@ export default function Header() {
             ☰
           </button>
         </div>
+
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex space-x-8 items-center font-medium relative z-50">
+          <li><Link href="/"><a className={isActive('/') ? 'text-accent font-bold' : 'hover:text-accent'}>Home</a></Link></li>
+
+          <li className="group relative">
+            <Link href="/about">
+              <a className={`inline-block ${isActive('/about') ? 'text-accent font-bold' : 'hover:text-accent'}`}>About Us ▾</a>
+            </Link>
+            <ul className="absolute left-0 mt-2 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56 z-[9999] py-2">
+              <li><Link href="/about/vision"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Vision & Mission</a></Link></li>
+              <li><Link href="/about/team"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Global Team</a></Link></li>
+              <li><Link href="/about/stories"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Success Stories</a></Link></li>
+              <li><Link href="/about/membership"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Membership</a></Link></li>
+            </ul>
+          </li>
+
+          <li><Link href="/services"><a className={isActive('/services') ? 'text-accent font-bold' : 'hover:text-accent'}>Services</a></Link></li>
+          <li><Link href="/news"><a className={isActive('/news') ? 'text-accent font-bold' : 'hover:text-accent'}>Insights</a></Link></li>
+          <li><Link href="/contact"><a className={isActive('/contact') ? 'text-accent font-bold' : 'hover:text-accent'}>Contact</a></Link></li>
+        </ul>
       </div>
 
-      {/* Dark Overlay */}
+      {/* Mobile Slide-In Menu Overlay */}
       {menuOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-60 z-[998]" onClick={() => setMenuOpen(false)}></div>
       )}
@@ -78,9 +76,9 @@ export default function Header() {
             ✕
           </button>
 
-          {/* Mobile Menu Items */}
+          {/* Menu Links */}
           <nav className="flex flex-col space-y-1 text-sm uppercase tracking-wide font-semibold">
-            <SidebarLink href="/" label="Home" active={isActive('/')} />
+            <MobileLink href="/" label="Home" active={isActive('/')} />
             <div>
               <button
                 className="w-full text-left py-3 border-t border-gray-700 flex justify-between items-center"
@@ -91,20 +89,20 @@ export default function Header() {
               </button>
               {aboutOpen && (
                 <div className="pl-4 text-sm space-y-2 mt-2">
-                  <SidebarLink href="/about/vision" label="Vision & Mission" active={isActive('/about/vision')} />
-                  <SidebarLink href="/about/team" label="Global Team" active={isActive('/about/team')} />
-                  <SidebarLink href="/about/stories" label="Success Stories" active={isActive('/about/stories')} />
-                  <SidebarLink href="/about/membership" label="Membership" active={isActive('/about/membership')} />
+                  <MobileLink href="/about/vision" label="Vision & Mission" active={isActive('/about/vision')} />
+                  <MobileLink href="/about/team" label="Global Team" active={isActive('/about/team')} />
+                  <MobileLink href="/about/stories" label="Success Stories" active={isActive('/about/stories')} />
+                  <MobileLink href="/about/membership" label="Membership" active={isActive('/about/membership')} />
                 </div>
               )}
             </div>
-            <SidebarLink href="/services" label="Services" active={isActive('/services')} />
-            <SidebarLink href="/news" label="Highlights" active={isActive('/news')} />
-            <SidebarLink href="/ratings" label="Ratings" active={isActive('/ratings')} />
-            <SidebarLink href="/testimonials" label="Testimonials" active={isActive('/testimonials')} />
-            <SidebarLink href="/disclaimer" label="Disclaimer" active={isActive('/disclaimer')} />
-            <SidebarLink href="/blogs" label="Blogs" active={isActive('/blogs')} />
-            <SidebarLink href="/free-trade" label="Free Trade Finance" active={isActive('/free-trade')} />
+            <MobileLink href="/services" label="Services" active={isActive('/services')} />
+            <MobileLink href="/news" label="Highlights" active={isActive('/news')} />
+            <MobileLink href="/ratings" label="Ratings" active={isActive('/ratings')} />
+            <MobileLink href="/testimonials" label="Testimonials" active={isActive('/testimonials')} />
+            <MobileLink href="/disclaimer" label="Disclaimer" active={isActive('/disclaimer')} />
+            <MobileLink href="/blogs" label="Blogs" active={isActive('/blogs')} />
+            <MobileLink href="/free-trade" label="Free Trade Finance" active={isActive('/free-trade')} />
           </nav>
         </div>
       </div>
@@ -112,7 +110,8 @@ export default function Header() {
   )
 }
 
-function SidebarLink({ href, label, active }) {
+// Mobile link component
+function MobileLink({ href, label, active }) {
   return (
     <Link href={href}>
       <a className={`block px-2 py-3 border-t border-gray-700 ${active ? 'text-accent font-bold' : 'hover:text-accent'}`}>
