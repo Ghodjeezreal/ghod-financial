@@ -12,21 +12,23 @@ export default function Header() {
 
         <nav className="space-x-6 relative group">
           <Link href="/"><a>Home</a></Link>
-          <div className="inline-block relative group">
-            <button className="focus:outline-none">Services ▾</button>
-            <div className="absolute hidden group-hover:block bg-white shadow-md rounded mt-2 z-50 text-sm">
-              <Link href="/services/bridging-loans">
-                <a className="block px-4 py-2 hover:bg-gray-100">Bridging Loans</a>
-              </Link>
-              <Link href="/services/real-estate">
-                <a className="block px-4 py-2 hover:bg-gray-100">Real Estate Finance</a>
-              </Link>
-              <Link href="/services/development">
-                <a className="block px-4 py-2 hover:bg-gray-100">Development Loans</a>
-              </Link>
-            </div>
-          </div>
-          <Link href="/news"><a>Insights</a></Link>
+          <div className="relative group">
+  <button className="focus:outline-none">Services ▾</button>
+  <div className="absolute hidden group-hover:flex flex-col bg-white shadow-lg rounded mt-2 z-50 w-52 
+                  opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform 
+                  scale-95 group-hover:scale-100 origin-top">
+    <Link href="/services/bridging-loans">
+      <a className="px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Bridging Loans</a>
+    </Link>
+    <Link href="/services/real-estate">
+      <a className="px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Real Estate Finance</a>
+    </Link>
+    <Link href="/services/development">
+      <a className="px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Development Loans</a>
+    </Link>
+  </div>
+</div>
+                    <Link href="/news"><a>Insights</a></Link>
           <Link href="/contact"><a>Contact</a></Link>
         </nav>
       </div>
