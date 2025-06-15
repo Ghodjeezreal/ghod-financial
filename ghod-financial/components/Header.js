@@ -2,6 +2,16 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+// MobileLink reusable component
+function MobileLink({ href, label, active, noTopBorder }) {
+  return (
+    <Link href={href}>
+      <a className={`block px-2 py-3 ${noTopBorder ? '' : 'border-t border-gray-700'} ${active ? 'text-accent font-bold' : 'hover:text-accent'}`}>
+        {label}
+      </a>
+    </Link>
+  )
+}
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
