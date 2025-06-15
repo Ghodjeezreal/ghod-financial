@@ -46,9 +46,9 @@ export default function Header() {
 
   return (
     <header className={`sticky top-0 z-[999] shadow-md transition-colors duration-300 ${darkMode ? 'bg-[#0f172a]' : 'bg-white'}`}>
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-0 py-4"> {/* px-0 for zero horizontal padding */}
+      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 md:px-0 py-4">
         {/* Logo */}
-        <div className="flex-shrink-0 ml-0 pl-0">
+        <div className="flex-shrink-0">
           <Link href="/" legacyBehavior>
             <a className="flex items-center space-x-3">
               <Image src="/logo.png" alt="GHOD Logo" width={40} height={40} />
