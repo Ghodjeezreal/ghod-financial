@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { useState, useRef } from 'react';
+
 // MobileLink reusable component
 function MobileLink({ href, label, active, noTopBorder }) {
   return (
@@ -17,65 +17,43 @@ function MobileLink({ href, label, active, noTopBorder }) {
     </Link>
   )
 }
-export default function Header() {
-  const [aboutHover, setAboutHover] = useState(false);
-  const closeTimer = useRef(null);
 
-  const handleMouseEnter = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setAboutHover(true);
-  };
-
-  const handleMouseLeave = () => {
-    closeTimer.current = setTimeout(() => {
-      setAboutHover(false);
-    }, 120); // Short delay for smoother UX
-  };
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [subMenuOpen, setSubMenuOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
   const [aboutHover, setAboutHover] = useState(false)
+  const closeTimer = useRef(null)
 
-  
   const router = useRouter()
-
   const isActive = (path) => router.pathname === path
 
+  // Prevent background scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     if (!menuOpen) setSubMenuOpen(false)
   }, [menuOpen])
 
+  // Robust submenu hover logic
+  const handleMouseEnter = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setAboutHover(true)
+  }
+
+  const handleMouseLeave = () => {
+    closeTimer.current = setTimeout(() => {
+      setAboutHover(false)
+    }, 120)
+  }
+
   return (
-    <li
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="relative"
-    >
-      <Link href="/about" legacyBehavior>
-        <a className="inline-block hover:text-accent">About Us ▾</a>
-      </Link>
-      <ul
-        className={`
-          absolute top-full left-0
-          bg-white shadow-xl rounded-lg w-56 z-50
-          transition-opacity duration-150 ease-out
-          ${aboutHover ? 'opacity-100 block' : 'opacity-0 hidden'}
-        `}
-      >
-  return (
-    <header className={`sticky top-0 z-[999] shadow-md transition-colors duration-300 ${
-      darkMode ? 'bg-[#0f172a]' : 'bg-white'
-    }`}>
+    <header className={`sticky top-0 z-[999] shadow-md transition-colors duration-300 ${darkMode ? 'bg-[#0f172a]' : 'bg-white'}`}>
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link href="/" legacyBehavior>
           <a className="flex items-center space-x-3">
             <Image src="/logo.png" alt="GHOD Logo" width={40} height={40} />
-            <span className={`text-2xl font-bold tracking-widest ${
-              darkMode ? 'text-white' : 'text-primary'
-            }`}>GHOD</span>
+            <span className={`text-2xl font-bold tracking-widest ${darkMode ? 'text-white' : 'text-primary'}`}>GHOD</span>
           </a>
         </Link>
 
@@ -84,9 +62,7 @@ export default function Header() {
           <button onClick={() => setDarkMode(!darkMode)} title="Toggle Dark Mode" className="text-xl">
             {darkMode ? '🌙' : '☀️'}
           </button>
-          <button onClick={() => setMenuOpen(true)} className={`text-2xl ${
-            darkMode ? 'text-white' : 'text-primary'
-          }`}>☰</button>
+          <button onClick={() => setMenuOpen(true)} className={`text-2xl ${darkMode ? 'text-white' : 'text-primary'}`}>☰</button>
         </div>
 
         {/* Desktop Nav */}
@@ -98,57 +74,54 @@ export default function Header() {
               </a>
             </Link>
           </li>
-
+          {/* Robust About Us submenu */}
           <li
-  onMouseEnter={() => setAboutHover(true)}
-  onMouseLeave={() => setAboutHover(false)}
-  className="relative"
->
-  {/* Clickable “About Us” */}
-  <Link href="/about" legacyBehavior>
-    <a className="inline-block hover:text-accent">About Us ▾</a>
-  </Link>
-
-  {/* Controlled submenu */}
-  <ul
-    className={`
-      absolute top-full left-0
-      bg-white shadow-xl rounded-lg w-56 z-50
-      transition-opacity duration-150 ease-out
-      ${aboutHover ? 'opacity-100 block' : 'opacity-0 hidden'}
-    `}
-  >
-    <li>
-      <Link href="/about/vision" legacyBehavior>
-        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-          Vision &amp; Mission
-        </a>
-      </Link>
-    </li>
-    <li>
-      <Link href="/about/team" legacyBehavior>
-        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-          Global Team
-        </a>
-      </Link>
-    </li>
-    <li>
-      <Link href="/about/stories" legacyBehavior>
-        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-          Success Stories
-        </a>
-      </Link>
-    </li>
-    <li>
-      <Link href="/about/membership" legacyBehavior>
-        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-          Membership
-        </a>
-      </Link>
-    </li>
-  </ul>
-</li>
-
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="relative"
+          >
+            <Link href="/about" legacyBehavior>
+              <a className="inline-block hover:text-accent">About Us ▾</a>
+            </Link>
+            <ul
+              className={`
+                absolute top-full left-0
+                bg-white shadow-xl rounded-lg w-56 z-50
+                transition-opacity duration-150 ease-out
+                ${aboutHover ? 'opacity-100 block' : 'opacity-0 hidden'}
+              `}
+            >
+              <li>
+                <Link href="/about/vision" legacyBehavior>
+                  <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+                    Vision &amp; Mission
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/about/team" legacyBehavior>
+                  <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+                    Global Team
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/about/stories" legacyBehavior>
+                  <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+                    Success Stories
+                  </a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/about/membership" legacyBehavior>
+                  <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+                    Membership
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          </li>
+          {/* ... other nav items ... */}
         </ul>
       </div>
 
@@ -159,10 +132,6 @@ export default function Header() {
           onClick={() => setMenuOpen(false)}
         ></div>
       )}
-</ul>
-    </li>
-  );
-}
 
       {/* Mobile Main Menu */}
       <div className={`fixed top-0 right-0 h-full w-72 z-50 transform transition-transform duration-500 ease-in-out ${
