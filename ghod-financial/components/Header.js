@@ -26,7 +26,7 @@ export default function Header() {
   </Link>
 
   {/* Hover Menu */}
-  <ul className="absolute left-0 -mt-2 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
+  <ul className="absolute left-0 -mt-4 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
                  opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform 
                  scale-95 group-hover:scale-100 z-[9999] py-2">
     <li>
