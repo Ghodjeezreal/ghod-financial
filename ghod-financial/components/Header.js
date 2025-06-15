@@ -80,7 +80,7 @@ export default function Header() {
           <nav className="flex flex-col space-y-1 text-sm uppercase tracking-wide font-semibold">
             <MobileLink href="/" label="Home" active={isActive('/')} />
             <button
-              className="w-full text-left px-2 py-3 border-b border-gray-700 flex justify-between items-center hover:text-accent"
+              className="w-full text-left px-2 py-3 flex justify-between items-center hover:text-accent"
               onClick={() => setSubMenuOpen(true)}
             >
               About Us →
