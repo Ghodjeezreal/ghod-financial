@@ -23,24 +23,10 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex space-x-8 items-center font-medium">
-          <li><Link href="/"><a className={`${isActive('/') ? 'text-accent font-bold' : 'hover:text-accent'}`}>Home</a></Link></li>
-
-          <li className="group relative">
-            <Link href="/about">
-              <a className={`${isActive('/about') ? 'text-accent font-bold' : 'hover:text-accent'} inline-block`}>
-                About Us ▾
-              </a>
-            </Link>
-            <ul className="absolute left-0 mt-2 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56 z-[9999] py-2">
-              <li><Link href="/about/vision"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Vision & Mission</a></Link></li>
-              <li><Link href="/about/team"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Global Team</a></Link></li>
-              <li><Link href="/about/stories"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Success Stories</a></Link></li>
-              <li><Link href="/about/membership"><a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">Membership</a></Link></li>
-            </ul>
-          </li>
-
-          <Link href="/services">
+        <ul className="hidden md:flex space-x-8 items-center font-medium relative z-50">
+          <li><Link href="/"><a className="hover:text-accent">Home</a></Link></li>
+          <li className="relative group">
+            <Link href="/services">
               <a className="hover:text-accent inline-block">Services ▾</a>
             </Link>
             <ul className="absolute left-0 -mt-1 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
@@ -51,9 +37,10 @@ export default function Header() {
               <li><Link href="/services/development"><a className="block px-4 py-3 hover:bg-gray-100">Development Loans</a></Link></li>
             </ul>
           </li>
-          <li><Link href="/news"><a className={`${isActive('/news') ? 'text-accent font-bold' : 'hover:text-accent'}`}>Highlights</a></Link></li>
-          <li><Link href="/contact"><a className={`${isActive('/contact') ? 'text-accent font-bold' : 'hover:text-accent'}`}>Contact</a></Link></li>
+          <li><Link href="/news"><a className="hover:text-accent">Insights</a></Link></li>
+          <li><Link href="/contact"><a className="hover:text-accent">Contact</a></Link></li>
         </ul>
+      </div>
 
         {/* Mobile controls */}
         <div className="flex items-center space-x-4 md:hidden">
