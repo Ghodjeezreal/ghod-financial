@@ -106,7 +106,7 @@ export default function Header() {
             <span className="text-xl">←</span><span>Back</span>
           </button>
 
-          <h3 className="uppercase tracking-wide font-bold text-sm pb-2">About Us</h3>
+          <h3 className="uppercase tracking-wide font-bold text-sm border-b border-gray-700 pb-2">About Us</h3>
 
           <nav className="flex flex-col space-y-1 text-sm uppercase tracking-wide font-semibold">
             <MobileLink href="/about/vision" label="Vision & Mission" active={isActive('/about/vision')} />
@@ -120,3 +120,12 @@ export default function Header() {
   )
 }
 
+function MobileLink({ href, label, active }) {
+  return (
+    <Link href={href}>
+      <a className={`block px-2 py-3 border-t border-gray-700 ${active ? 'text-accent font-bold' : 'hover:text-accent'}`}>
+        {label}
+      </a>
+    </Link>
+  )
+}
