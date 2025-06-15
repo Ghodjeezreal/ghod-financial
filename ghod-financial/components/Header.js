@@ -275,7 +275,7 @@ export default function Header() {
             <span>Back</span>
           </button>
 
-          <h3 className="uppercase tracking-wide font-bold text-sm border-b border-gray-700 pb-2">
+          <h3 className="uppercase tracking-wide font-bold text-sm pb-2">
             About Us
           </h3>
 
