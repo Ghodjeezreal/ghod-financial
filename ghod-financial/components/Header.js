@@ -19,30 +19,39 @@ export default function Header() {
             <Link href="/"><a className="hover:text-accent">Home</a></Link>
           </li>
 
-          {/* Services Dropdown */}
-          <li className="relative group">
-          <button className="hover:text-accent focus:outline-none cursor-default">Services ▾</button>
-            <ul className="absolute left-0 top-full mt-1 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
-               opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform 
-               scale-95 group-hover:scale-100 z-[9999] py-2">
-  <li>
-    <Link href="/services/bridging-loans">
-      <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap rounded-md transition-colors duration-200">Bridging Loans</a>
-    </Link>
-  </li>
-  <li>
-    <Link href="/services/real-estate">
-      <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap rounded-md transition-colors duration-200">Real Estate Finance</a>
-    </Link>
-  </li>
-  <li>
-    <Link href="/services/development">
-      <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap rounded-md transition-colors duration-200">Development Loans</a>
-    </Link>
-  </li>
-</ul>
+          {/* Services Dropdown - Clickable AND Hoverable */}
+<li className="relative group">
+  <Link href="/services">
+    <a className="hover:text-accent focus:outline-none inline-block">Services ▾</a>
+  </Link>
 
-          </li>
+  {/* Hover Menu */}
+  <ul className="absolute left-0 -mt-1 hidden group-hover:flex flex-col bg-white shadow-xl rounded-lg w-56
+                 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform 
+                 scale-95 group-hover:scale-100 z-[9999] py-2">
+    <li>
+      <Link href="/services/bridging-loans">
+        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap rounded-md transition-colors duration-200">
+          Bridging Loans
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/services/real-estate">
+        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap rounded-md transition-colors duration-200">
+          Real Estate Finance
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/services/development">
+        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap rounded-md transition-colors duration-200">
+          Development Loans
+        </a>
+      </Link>
+    </li>
+  </ul>
+</li>
 
           <li>
             <Link href="/news"><a className="hover:text-accent">Insights</a></Link>
