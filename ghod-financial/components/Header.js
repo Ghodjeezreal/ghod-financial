@@ -66,74 +66,52 @@ export default function Header() {
             </Link>
           </li>
 
-          {/* FIXED About Us Dropdown */}
           <li className="relative group">
-            <Link href="/about" legacyBehavior>
-              <a className="inline-block hover:text-accent">
-                About Us ▾
-              </a>
-            </Link>
-            <div
-              className="
-                absolute top-full left-0
-                hidden group-hover:block
-                bg-white shadow-xl rounded-lg w-56 z-50
-              "
-            >
-              <ul className="divide-y divide-gray-200">
-                <li>
-                  <Link href="/about/vision" legacyBehavior>
-                    <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-                      Vision &amp; Mission
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about/team" legacyBehavior>
-                    <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-                      Global Team
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about/stories" legacyBehavior>
-                    <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-                      Success Stories
-                    </a>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about/membership" legacyBehavior>
-                    <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
-                      Membership
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </li>
+  {/* Clickable “About Us” */}
+  <Link href="/about" legacyBehavior>
+    <a className="inline-block hover:text-accent">About Us ▾</a>
+  </Link>
 
-          <li>
-            <Link href="/services" legacyBehavior>
-              <a className={isActive('/services') ? 'text-accent font-bold' : 'hover:text-accent'}>
-                Services
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/news" legacyBehavior>
-              <a className={isActive('/news') ? 'text-accent font-bold' : 'hover:text-accent'}>
-                Insights
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact" legacyBehavior>
-              <a className={isActive('/contact') ? 'text-accent font-bold' : 'hover:text-accent'}>
-                Contact
-              </a>
-            </Link>
-          </li>
+  {/* Dropdown, positioned flush under the link */}
+  <ul
+    className="
+      absolute
+      top-full left-0        /* zero gap */
+      hidden group-hover:block
+      bg-white shadow-xl rounded-lg w-56 z-50
+    "
+  >
+    <li>
+      <Link href="/about/vision" legacyBehavior>
+        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+          Vision &amp; Mission
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/about/team" legacyBehavior>
+        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+          Global Team
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/about/stories" legacyBehavior>
+        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+          Success Stories
+        </a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/about/membership" legacyBehavior>
+        <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+          Membership
+        </a>
+      </Link>
+    </li>
+  </ul>
+</li>
+
         </ul>
       </div>
 
