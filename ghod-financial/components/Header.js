@@ -89,43 +89,53 @@ export default function Header() {
             </Link>
           </li>
 
+         {/* FIXED About Us Dropdown */}
           <li className="relative group">
-  <Link href="/about" legacyBehavior>
-    <a className="hover:text-accent inline-block">About Us ▾</a>
-  </Link>
-  <div
-    className="
-      absolute left-0 mt-1
-      opacity-0 pointer-events-none
-      group-hover:opacity-100 group-hover:pointer-events-auto
-      transition-opacity duration-200
-      bg-white shadow-xl rounded-lg w-56 z-50
-    "
-  >
-    <ul className="divide-y divide-gray-200">
-      <li>
-        <Link href="/about/vision" legacyBehavior>
-          <a className="block px-4 py-3 hover:bg-gray-100">Vision &amp; Mission</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/about/team" legacyBehavior>
-          <a className="block px-4 py-3 hover:bg-gray-100">Global Team</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/about/stories" legacyBehavior>
-          <a className="block px-4 py-3 hover:bg-gray-100">Success Stories</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/about/membership" legacyBehavior>
-          <a className="block px-4 py-3 hover:bg-gray-100">Membership</a>
-        </Link>
-      </li>
-    </ul>
-  </div>
-</li>
+            <Link href="/about" legacyBehavior>
+              <a className="inline-block hover:text-accent">
+                About Us ▾
+              </a>
+            </Link>
+            <div
+              className="
+                absolute top-full left-0
+                hidden group-hover:block
+                bg-white shadow-xl rounded-lg w-56 z-50
+                transition-opacity duration-200 ease-out
+              "
+            >
+              <ul className="divide-y divide-gray-200">
+                <li>
+                  <Link href="/about/vision" legacyBehavior>
+                    <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+                      Vision &amp; Mission
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about/team" legacyBehavior>
+                    <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+                      Global Team
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about/stories" legacyBehavior>
+                    <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+                      Success Stories
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about/membership" legacyBehavior>
+                    <a className="block px-4 py-3 hover:bg-gray-100 whitespace-nowrap">
+                      Membership
+                    </a>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </li>
 
           <li>
             <Link href="/services" legacyBehavior>
