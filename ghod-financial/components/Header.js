@@ -19,8 +19,18 @@ export default function Header() {
   const [darkMode, setDarkMode] = useState(false)
 
   const router = useRouter()
-  const isActive = (href) => router.pathname === href
+  // For highlighting active links
+  const isActive = (path) => router.pathname === path
 
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+      setSubMenuOpen(false)
+    }
+  }, [menuOpen])
   return (
     <header className={`${darkMode ? 'bg-[#0f172a]' : 'bg-white'} shadow-md sticky top-0 z-[999] transition-colors duration-300`}>
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
