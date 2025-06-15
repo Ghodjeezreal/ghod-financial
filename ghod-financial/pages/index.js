@@ -1,18 +1,41 @@
+import Image from 'next/image'
+import Link from 'next/link'
+
 export default function Home() {
   return (
-    <section className="relative bg-primary text-white min-h-screen flex items-center justify-center px-6">
-      <div className="text-center max-w-3xl">
-        <h1 className="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
+    <section className="relative min-h-screen flex items-center justify-center">
+      {/* Background image + overlay */}
+      <div className="absolute inset-0">
+        <Image
+          src="/hero.jpg"
+          alt="Business finance background"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          priority
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      </div>
+
+      {/* Hero content */}
+      <div className="relative z-10 text-center px-6 max-w-3xl">
+        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4">
           Unlock Fast, Flexible Finance
         </h1>
-        <p className="text-xl md:text-2xl mb-8 text-gray-300">
-          Bespoke bridging loans designed to fit your business timeline.
+        <p className="text-lg md:text-2xl text-gray-200 mb-8">
+          Bespoke bridging loans and tailor-made finance solutions to grow your business.
         </p>
-        <a href="/contact" className="btn-primary text-lg inline-block">
-          Apply Now
-        </a>
+        <div className="space-x-4">
+          <Link href="/contact">
+            <a className="btn-primary">Apply Now</a>
+          </Link>
+          <Link href="/services">
+            <a className="btn-secondary border border-white text-white hover:bg-white hover:text-primary transition">
+              Our Services
+            </a>
+          </Link>
+        </div>
       </div>
-      <div className="absolute inset-0 bg-[url('/placeholder.jpg')] bg-cover bg-center opacity-10"></div>
     </section>
-  );
+  )
 }
