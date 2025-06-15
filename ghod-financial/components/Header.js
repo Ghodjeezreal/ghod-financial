@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-
+import { useState, useRef } from 'react';
 // MobileLink reusable component
 function MobileLink({ href, label, active, noTopBorder }) {
   return (
@@ -17,7 +17,20 @@ function MobileLink({ href, label, active, noTopBorder }) {
     </Link>
   )
 }
+export default function Header() {
+  const [aboutHover, setAboutHover] = useState(false);
+  const closeTimer = useRef(null);
 
+  const handleMouseEnter = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setAboutHover(true);
+  };
+
+  const handleMouseLeave = () => {
+    closeTimer.current = setTimeout(() => {
+      setAboutHover(false);
+    }, 120); // Short delay for smoother UX
+  };
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [subMenuOpen, setSubMenuOpen] = useState(false)
@@ -34,6 +47,23 @@ export default function Header() {
     if (!menuOpen) setSubMenuOpen(false)
   }, [menuOpen])
 
+  return (
+    <li
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="relative"
+    >
+      <Link href="/about" legacyBehavior>
+        <a className="inline-block hover:text-accent">About Us ▾</a>
+      </Link>
+      <ul
+        className={`
+          absolute top-full left-0
+          bg-white shadow-xl rounded-lg w-56 z-50
+          transition-opacity duration-150 ease-out
+          ${aboutHover ? 'opacity-100 block' : 'opacity-0 hidden'}
+        `}
+      >
   return (
     <header className={`sticky top-0 z-[999] shadow-md transition-colors duration-300 ${
       darkMode ? 'bg-[#0f172a]' : 'bg-white'
@@ -129,6 +159,10 @@ export default function Header() {
           onClick={() => setMenuOpen(false)}
         ></div>
       )}
+</ul>
+    </li>
+  );
+}
 
       {/* Mobile Main Menu */}
       <div className={`fixed top-0 right-0 h-full w-72 z-50 transform transition-transform duration-500 ease-in-out ${
