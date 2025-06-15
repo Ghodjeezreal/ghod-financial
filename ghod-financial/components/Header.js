@@ -4,7 +4,7 @@ export default function Header() {
     <header className="bg-white shadow">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/">
-          <a className="text-2xl font-bold text-primary">Yield4</a>
+          <a className="text-2xl font-bold text-primary">Ghod's</a>
         </Link>
         <nav className="space-x-6">
           <Link href="/"><a>Home</a></Link>
