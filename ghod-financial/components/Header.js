@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [aboutOpen, setAboutOpen] = useState(false)
+  const [subMenuOpen, setSubMenuOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
 
   const router = useRouter()
@@ -61,41 +61,30 @@ export default function Header() {
         </ul>
       </div>
 
-      {/* Mobile Slide-In Menu Overlay */}
+      {/* Overlay */}
       {menuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 z-[998]" onClick={() => setMenuOpen(false)}></div>
+        <div className="fixed inset-0 bg-black bg-opacity-60 z-[998]" onClick={() => { setMenuOpen(false); setSubMenuOpen(false); }}></div>
       )}
 
-      {/* Mobile Sidebar */}
-      <div className={`fixed top-0 right-0 h-full w-72 ${darkMode ? 'bg-[#0f172a] text-white' : 'bg-white text-black'} 
+      {/* Mobile Main Menu */}
+      <div className={`fixed top-0 right-0 h-full w-72 ${darkMode ? 'bg-[#0f172a] text-white' : 'bg-white text-black'}
                       z-[999] transform transition-transform duration-500 ease-in-out 
-                      ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                      ${menuOpen && !subMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="p-6 flex flex-col h-full space-y-6 overflow-y-auto">
           {/* Close Button */}
           <button onClick={() => setMenuOpen(false)} className="text-2xl self-end">
             ✕
           </button>
 
-          {/* Menu Links */}
+          {/* Main Nav */}
           <nav className="flex flex-col space-y-1 text-sm uppercase tracking-wide font-semibold">
             <MobileLink href="/" label="Home" active={isActive('/')} />
-            <div>
-              <button
-                className="w-full text-left py-3 border-t border-gray-700 flex justify-between items-center"
-                onClick={() => setAboutOpen(!aboutOpen)}
-              >
-                About Us
-                <span>{aboutOpen ? '−' : '+'}</span>
-              </button>
-              {aboutOpen && (
-                <div className="pl-4 text-sm space-y-2 mt-2">
-                  <MobileLink href="/about/vision" label="Vision & Mission" active={isActive('/about/vision')} />
-                  <MobileLink href="/about/team" label="Global Team" active={isActive('/about/team')} />
-                  <MobileLink href="/about/stories" label="Success Stories" active={isActive('/about/stories')} />
-                  <MobileLink href="/about/membership" label="Membership" active={isActive('/about/membership')} />
-                </div>
-              )}
-            </div>
+            <button
+              className="w-full text-left px-2 py-3 border-t border-gray-700 flex justify-between items-center hover:text-accent"
+              onClick={() => setSubMenuOpen(true)}
+            >
+              About Us →
+            </button>
             <MobileLink href="/services" label="Services" active={isActive('/services')} />
             <MobileLink href="/news" label="Highlights" active={isActive('/news')} />
             <MobileLink href="/ratings" label="Ratings" active={isActive('/ratings')} />
@@ -106,11 +95,31 @@ export default function Header() {
           </nav>
         </div>
       </div>
+
+      {/* Mobile Submenu: About Us */}
+      <div className={`fixed top-0 right-0 h-full w-72 ${darkMode ? 'bg-[#0f172a] text-white' : 'bg-white text-black'}
+                      z-[999] transform transition-transform duration-500 ease-in-out 
+                      ${subMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="p-6 flex flex-col h-full space-y-6 overflow-y-auto">
+          {/* Back Button */}
+          <button onClick={() => setSubMenuOpen(false)} className="text-sm flex items-center space-x-2">
+            <span className="text-xl">←</span><span>Back</span>
+          </button>
+
+          <h3 className="uppercase tracking-wide font-bold text-sm border-b border-gray-700 pb-2">About Us</h3>
+
+          <nav className="flex flex-col space-y-1 text-sm uppercase tracking-wide font-semibold">
+            <MobileLink href="/about/vision" label="Vision & Mission" active={isActive('/about/vision')} />
+            <MobileLink href="/about/team" label="Global Team" active={isActive('/about/team')} />
+            <MobileLink href="/about/stories" label="Success Stories" active={isActive('/about/stories')} />
+            <MobileLink href="/about/membership" label="Membership" active={isActive('/about/membership')} />
+          </nav>
+        </div>
+      </div>
     </header>
   )
 }
 
-// Mobile link component
 function MobileLink({ href, label, active }) {
   return (
     <Link href={href}>
