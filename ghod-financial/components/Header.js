@@ -20,7 +20,7 @@ export default function Header() {
           {/* Services Dropdown */}
           <div className="relative group">
             <button className="hover:text-accent">Services ▾</button>
-            <div className="absolute top-full left-0 mt-2 hidden group-hover:flex flex-col bg-white shadow-lg rounded z-50 w-56
+            <div className="absolute top-full left-0 mt-2 hidden group-hover:flex flex-col bg-white shadow-lg rounded z-90 w-56
                 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-out transform 
                 scale-95 group-hover:scale-100 origin-top">
               <Link href="/services/bridging-loans">
