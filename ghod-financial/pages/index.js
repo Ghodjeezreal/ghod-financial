@@ -8,8 +8,8 @@ export default function Home() {
       <Image
         src="/hero.jpg"
         alt="Business finance background"
-        layout="fill"
-        objectFit="cover"
+        fill
+        className="object-cover"
         priority
       />
 
