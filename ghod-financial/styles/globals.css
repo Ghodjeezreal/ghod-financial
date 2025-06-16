@@ -2,19 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---- Custom Button Styles ---- */
 @layer components {
   .btn-primary {
     @apply bg-accent text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg;
-    .btn-secondary {
-  @apply border border-white text-white font-semibold py-2 px-4 rounded-lg transition;
-}
-.btn-secondary:hover {
-  @apply bg-white text-primary;
-}
+  }
+  .btn-secondary {
+    @apply border border-white text-white font-semibold py-2 px-4 rounded-lg transition;
+  }
+  .btn-secondary:hover {
+    @apply bg-white text-primary;
   }
 }
 
+/* ---- Custom Animations and Utilities ---- */
 @layer utilities {
+  /* Slide-in animation */
   @keyframes slide-in {
     from { transform: translateX(100%); opacity: 0 }
     to   { transform: translateX(0);     opacity: 1 }
@@ -22,30 +25,36 @@
   .animate-slide-in {
     animation: slide-in 0.4s ease-out forwards;
   }
+
+  /* Overlay moving animation (fixed for background movement) */
   @keyframes overlay-slide {
     0%,100% { background-position: 0% 50%; }
     50%     { background-position:100% 50%; }
   }
   .overlay-animate {
-    @apply bg-[length:200%_200%] bg-gradient-to-r from-black via-transparent to-black opacity-70;
+    background-image: linear-gradient(120deg, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.85) 80%);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    opacity: 0.7;
     animation: overlay-slide 30s ease infinite;
+    pointer-events: none; /* So overlay never blocks buttons/links */
   }
 
-  /* Typewriter effect for headline */
+  /* Typewriter effect for headline (fixed so text stays after typing) */
   @keyframes typing {
     from { width: 0 }
     to   { width: 100% }
   }
   @keyframes blink {
     0%,100% { border-color: transparent }
-    50%      { border-color: white }
+    50%     { border-color: white }
   }
   .typing {
     overflow: hidden;
     white-space: nowrap;
     border-right: .15em solid white;
     animation:
-      typing 3s steps(30,end) 1,
+      typing 3s steps(30,end) 1 forwards,
       blink  .75s step-end infinite;
     display: inline-block;
     width: 0; /* start closed */
