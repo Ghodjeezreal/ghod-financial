@@ -19,9 +19,14 @@ export default function Home() {
       {/* Hero content */}
       <div className="relative z-10 text-center px-6 max-w-3xl">
         {/* Animated typing headline */}
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4">
-          <span className="typing">Unlock Fast, Flexible Finance</span>
-        </h1>
+       <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4">
+  <span
+    className={`inline-block transition-opacity duration-700 ease-in ${fade ? 'opacity-100' : 'opacity-0'}`}
+  >
+    {words[index]}
+  </span>{' '}
+  Fast, Flexible Finance
+</h1>
         <p className="text-lg md:text-2xl text-gray-200 mb-8">
           Bespoke bridging loans and tailor-made solutions to grow your business.
         </p>
