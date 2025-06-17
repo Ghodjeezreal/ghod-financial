@@ -22,13 +22,13 @@ export default function Home() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated background image */}
-      <div className="absolute inset-0 animate-bg-pan">
+      {/* Background Image */}
+      <div className="absolute inset-0">
         <Image
           src="/hero.jpg"
           alt="Business finance background"
           fill
-          className="object-cover"
+          className="object-cover animate-bg-pan"
           priority
         />
       </div>
@@ -55,9 +55,7 @@ export default function Home() {
             <a className="btn-primary">Apply Now</a>
           </Link>
           <Link href="/services">
-            <a className="btn-secondary border-white text-white hover:bg-white hover:text-primary transition">
-              Our Services
-            </a>
+            <a className="btn-secondary">Our Services</a>
           </Link>
         </div>
       </div>
