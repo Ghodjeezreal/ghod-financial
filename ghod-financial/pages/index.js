@@ -45,7 +45,7 @@ export default function Home() {
           >
             {words[index]}
           </span>{' '}
-          Fast, Flexible Finance
+          Fast & Flexible Finance
         </h1>
         <p className="text-lg md:text-2xl text-gray-200 mb-8">
           Bespoke bridging loans and tailor-made solutions to grow your business.
