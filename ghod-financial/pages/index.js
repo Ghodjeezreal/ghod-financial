@@ -23,15 +23,15 @@ export default function Home() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-<div className="absolute inset-0 animate-bg-pan">
-  <Image
-    src="/hero.jpg"
-    alt="Business finance background"
-    fill
-    className="object-cover"
-    priority
-  />
-</div>
+<div className="absolute inset-0 w-[110vw] left-[-5vw] animate-bg-pan">
+    <Image
+      src="/hero.jpg"
+      alt="Business finance background"
+      fill
+      className="object-cover"
+      priority
+    />
+  </div>
 
 
       {/* Hero content */}
