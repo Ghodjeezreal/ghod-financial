@@ -33,8 +33,6 @@ export default function Home() {
   />
 </div>
 
-      {/* Moving dark overlay */}
-      <div className="absolute inset-0 overlay-animate"></div>
 
       {/* Hero content */}
       <div className="relative z-10 text-center px-6 max-w-3xl">
