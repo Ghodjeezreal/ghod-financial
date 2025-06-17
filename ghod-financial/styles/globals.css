@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,5 +39,12 @@
     opacity: 0.7;
     animation: overlay-slide 30s ease infinite;
     pointer-events: none; /* So overlay never blocks buttons/links */
+  }
+  @keyframes bg-pan {
+    0% { transform: scale(1.05) translateX(0); }
+    100% { transform: scale(1.05) translateX(-20px); }
+  }
+  .animate-bg-pan {
+    animation: bg-pan 60s linear infinite;
   }
 }
