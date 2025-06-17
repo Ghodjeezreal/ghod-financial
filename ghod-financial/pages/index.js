@@ -23,15 +23,15 @@ export default function Home() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/hero.jpg"
-          alt="Business finance background"
-          fill
-          className="object-cover animate-bg-pan"
-          priority
-        />
-      </div>
+        <div className="absolute inset-0 animate-bg-pan">
+  <Image
+    src="/hero.jpg"
+    alt="Business finance background"
+    fill
+    className="object-cover"
+    priority
+  />
+</div>
 
       {/* Moving dark overlay */}
       <div className="absolute inset-0 overlay-animate"></div>
