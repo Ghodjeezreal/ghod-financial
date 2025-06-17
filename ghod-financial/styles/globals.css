@@ -42,10 +42,10 @@
 
   /* Background pan animation: ONLY DEFINE ONCE! */
   @keyframes bg-pan {
-    0% { transform: scale(1.05) translateX(0); }
-    100% { transform: scale(1.05) translateX(-100px); }
-  }
-  .animate-bg-pan {
-    animation: bg-pan 20s linear infinite;
-  }
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100px); }
+}
+.animate-bg-pan {
+  animation: bg-pan 20s linear infinite;
+}
 }
